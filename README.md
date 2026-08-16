@@ -2,6 +2,8 @@
 
 MetaBar is an Obsidian plugin that displays file creation and modification dates in a small bar above the editor.
 
+![MetaBar displaying created and modified dates above an Obsidian note](./images/screenshot.png)
+
 ## Usage
 
 Enable MetaBar and open a note in edit mode. The bar shows:

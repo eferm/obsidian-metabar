@@ -1,9 +1,9 @@
 import { Plugin } from 'obsidian';
 
-import { metadataPanel } from './metabar';
+import { createMetadataPanelExtension } from './metabar';
 
 export default class MetaBarPlugin extends Plugin {
 	onload(): void {
-		this.registerEditorExtension(metadataPanel);
+		this.registerEditorExtension(createMetadataPanelExtension(this.app.vault));
 	}
 }

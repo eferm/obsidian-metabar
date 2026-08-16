@@ -1,6 +1,6 @@
-import type { EditorState } from '@codemirror/state';
+import type { EditorState, Extension } from '@codemirror/state';
 import { type EditorView, type Panel, showPanel, type ViewUpdate } from '@codemirror/view';
-import { editorInfoField, type TFile } from 'obsidian';
+import { editorInfoField, type TFile, type Vault } from 'obsidian';
 
 const DATE_FORMATTER = new Intl.DateTimeFormat(undefined, {
 	year: 'numeric',
@@ -23,9 +23,15 @@ function updatePanel(dom: HTMLElement, state: EditorState): void {
 	dom.textContent = file ? formatMetadata(file) : '';
 }
 
-function createMetadataPanel(view: EditorView): Panel {
+function createMetadataPanel(vault: Vault, view: EditorView): Panel {
 	const dom = createDiv({ cls: 'metabar' });
 	updatePanel(dom, view.state);
+
+	const modifiedEvent = vault.on('modify', (file) => {
+		if (file === view.state.field(editorInfoField, false)?.file) {
+			updatePanel(dom, view.state);
+		}
+	});
 
 	let container: HTMLElement;
 
@@ -40,9 +46,12 @@ function createMetadataPanel(view: EditorView): Panel {
 			updatePanel(dom, update.state);
 		},
 		destroy(): void {
+			vault.offref(modifiedEvent);
 			container.classList.remove('metabar-container');
 		},
 	};
 }
 
-export const metadataPanel = showPanel.of(createMetadataPanel);
+export function createMetadataPanelExtension(vault: Vault): Extension {
+	return showPanel.of((view) => createMetadataPanel(vault, view));
+}

@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-metabar",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Displays file creation and modification dates above the Obsidian editor.",
 	"main": "main.js",
 	"type": "module",
