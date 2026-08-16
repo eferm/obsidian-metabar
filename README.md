@@ -11,10 +11,6 @@ Enable MetaBar and open a note in edit mode. The bar shows:
 
 Timestamps follow your system locale and the bar follows your active Obsidian theme.
 
-## Installation
-
-Download `main.js`, `manifest.json`, and `styles.css` from a release and place them in `<vault>/.obsidian/plugins/obsidian-metabar/`. Reload Obsidian, then enable **MetaBar** under **Settings → Community plugins**.
-
 ## Install from source
 
 Clone the repository, install dependencies, and symlink the checkout into your vault:
@@ -23,7 +19,7 @@ Clone the repository, install dependencies, and symlink the checkout into your v
 git clone https://github.com/eferm/obsidian-metabar.git
 cd obsidian-metabar
 npm install
-ln -s "$PWD" "<vault>/.obsidian/plugins/obsidian-metabar"
+ln -s "$PWD" "<vault>/.obsidian/plugins/metabar"
 npm run build
 ```
 
