@@ -34,13 +34,16 @@ function createMetadataPanel(vault: Vault, view: EditorView): Panel {
 	});
 
 	let container: HTMLElement;
+	let editor: HTMLElement;
 
 	return {
 		top: true,
 		dom,
 		mount(): void {
 			container = dom.parentElement as HTMLElement;
+			editor = container.parentElement as HTMLElement;
 			container.classList.add('metabar-container');
+			editor.classList.add('metabar-editor');
 		},
 		update(update: ViewUpdate): void {
 			updatePanel(dom, update.state);
@@ -48,6 +51,7 @@ function createMetadataPanel(vault: Vault, view: EditorView): Panel {
 		destroy(): void {
 			vault.offref(modifiedEvent);
 			container.classList.remove('metabar-container');
+			editor.classList.remove('metabar-editor');
 		},
 	};
 }

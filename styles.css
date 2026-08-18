@@ -8,3 +8,19 @@
 	font-variant-numeric: tabular-nums;
 	text-align: center;
 }
+
+.is-phone .mod-root .workspace-leaf-content[data-type='markdown']
+	.view-content
+	.markdown-source-view.mod-cm6
+	> .cm-editor.metabar-editor
+	> .cm-panels-top.metabar-container {
+	padding-top: var(--view-top-spacing-markdown);
+}
+
+.is-phone .mod-root .workspace-leaf-content[data-type='markdown']
+	.view-content
+	.markdown-source-view.mod-cm6
+	> .cm-editor.metabar-editor
+	> .cm-scroller {
+	padding-top: var(--size-4-2);
+}
